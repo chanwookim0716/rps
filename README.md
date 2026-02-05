@@ -1,4 +1,4 @@
-# rps
+# chanwookim-rps
 
 Simple rock-paper-scissors CLI (가위바위보).
 
@@ -9,48 +9,57 @@ Features
 Prerequisites
 - Python 3.8+
 
-Installation
-- Install directly from this GitHub repository:
+## Installation
 
-```
-pip install git+https://github.com/chanwookim0716/rps.git
+### From TestPyPI (Recommended for testing the published package)
+```bash
+pip install --index-url https://test.pypi.org/simple/ --no-deps chanwookim-rps
 ```
 
-- Or install locally (user scope):
-
+### From GitHub repository
+```bash
+pip install git+https://github.com/chanwookim0716/chanwookim-rps.git
 ```
-cd rps
+
+### Local Installation
+Navigate to the project root directory and run:
+```bash
 pip install --user .
 ```
 
-- For development (editable install):
-
-```
+### For Development (Editable Install)
+Navigate to the project root directory and run:
+```bash
 pip install -e .
 ```
 
-Usage
-- Run directly with Python:
-
-```
-python rps.py
-```
-
-- After installation you can run the CLI command:
-
-```
+## Usage
+After installation, you can run the CLI command:
+```bash
 rps
 ```
 
-Development
-- Run the simple test runner (scripted inputs) to exercise the game logic:
-
+Alternatively, you can run directly with Python from the project root:
+```bash
+python rps.py
 ```
+
+## Development
+
+### Running Unit Tests
+To ensure the core game logic is working correctly, run the unit tests:
+```bash
+python -m unittest test_rps.py
+```
+
+### Running the Test Runner
+A simple test runner (with scripted inputs) is available to exercise the game logic:
+```bash
 python _test_rps_runner.py
 ```
 
-Contributing
+## Contributing
 - Fork the repo, make changes, and open a pull request. Keep changes small and focused.
 
-License
-- Add a LICENSE file if you want to publish under a specific license.
+## License
+This project is licensed under the [LICENSE](LICENSE) file.
