@@ -1,0 +1,75 @@
+Metadata-Version: 2.4
+Name: chanwookim-rps
+Version: 0.0.1
+Summary: Simple rock-paper-scissors CLI
+Author: chanwookim0716
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
+# chanwookim-rps
+
+Simple rock-paper-scissors CLI (가위바위보).
+
+Features
+- Interactive terminal game with score tracking.
+- Simple CLI entry point after installation (`rps`).
+
+Prerequisites
+- Python 3.8+
+
+## Installation
+
+### From TestPyPI (Recommended for testing the published package)
+```bash
+pip install --index-url https://test.pypi.org/simple/ --no-deps chanwookim-rps
+```
+
+### From GitHub repository
+```bash
+pip install git+https://github.com/chanwookim0716/chanwookim-rps.git
+```
+
+### Local Installation
+Navigate to the project root directory and run:
+```bash
+pip install --user .
+```
+
+### For Development (Editable Install)
+Navigate to the project root directory and run:
+```bash
+pip install -e .
+```
+
+## Usage
+After installation, you can run the CLI command:
+```bash
+rps
+```
+
+Alternatively, you can run directly with Python from the project root:
+```bash
+python rps.py
+```
+
+## Development
+
+### Running Unit Tests
+To ensure the core game logic is working correctly, run the unit tests:
+```bash
+python -m unittest test_rps.py
+```
+
+### Running the Test Runner
+A simple test runner (with scripted inputs) is available to exercise the game logic:
+```bash
+python _test_rps_runner.py
+```
+
+## Contributing
+- Fork the repo, make changes, and open a pull request. Keep changes small and focused.
+
+## License
+This project is licensed under the [LICENSE](LICENSE) file.

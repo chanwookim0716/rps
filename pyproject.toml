@@ -10,4 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 
 [project.scripts]
-rps = "rps:main"
+rps = "chanwookim_rps:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

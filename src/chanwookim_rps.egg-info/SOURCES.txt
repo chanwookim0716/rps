@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/chanwookim_rps/__init__.py
+src/chanwookim_rps.egg-info/PKG-INFO
+src/chanwookim_rps.egg-info/SOURCES.txt
+src/chanwookim_rps.egg-info/dependency_links.txt
+src/chanwookim_rps.egg-info/entry_points.txt
+src/chanwookim_rps.egg-info/top_level.txt
+tests/test_rps.py

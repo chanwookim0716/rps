@@ -6,7 +6,7 @@ import sys
 _inputs = iter(['게임', '바위', '끝내기', '닫기'])
 builtins.input = lambda prompt='': next(_inputs)
 
-spec = importlib.util.spec_from_file_location('rps', r'c:\coding\python\rps.py')
+spec = importlib.util.spec_from_file_location('chanwookim_rps', r'src/chanwookim_rps/__init__.py')
 module = importlib.util.module_from_spec(spec)
 sys.modules['rps'] = module
 try:
