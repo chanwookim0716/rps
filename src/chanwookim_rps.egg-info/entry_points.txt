@@ -1,2 +1,0 @@
-[console_scripts]
-rps = chanwookim_rps:main

@@ -1,5 +1,7 @@
 __pycache__/
 /dist/
 /build/
-/.egg-info/
+*.egg-info/
+.eggs/
 *.pyc
+tmpclaude*
