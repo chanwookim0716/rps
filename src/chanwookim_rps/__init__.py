@@ -5,14 +5,35 @@ Users can play against the computer, view game instructions, and track their sco
 import random
 import sys
 
-cmd_list = ['게임','설명','닫기']
-rps = ['가위', '바위', '보']
+commands = {
+    'game': ['game', 'play'],
+    'help': ['help', 'rules'],
+    'exit': ['exit', 'quit']
+}
+
+rps = ['scissors', 'rock', 'paper']
 win_cases = {
-    '가위': '보',
-    '바위': '가위',
-    '보': '바위'
+    'scissors': 'paper',
+    'rock': 'scissors',
+    'paper': 'rock'
 }
 score = 0
+
+def get_command_type(user_input):
+    """
+    Checks which command type the user input corresponds to.
+
+    Args:
+        user_input (str): User's input command.
+
+    Returns:
+        str: Command type ('game', 'help', 'exit') or None if not recognized.
+    """
+    user_input = user_input.lower().strip()
+    for cmd_type, aliases in commands.items():
+        if user_input in aliases:
+            return cmd_type
+    return None
 
 def main():
     """
@@ -21,18 +42,20 @@ def main():
     """
     while True:
         cmd = input('''
-    가위바위보 게임
-메뉴 | 게임 | 설명 | 닫기 |
+Rock-Paper-Scissors Game
+Menu | game | help | exit |
 : ''').strip()
-        if cmd == '게임':
+        cmd_type = get_command_type(cmd)
+
+        if cmd_type == 'game':
             game()
             break
-        if cmd == '설명':
+        elif cmd_type == 'help':
             intro()
-        if cmd == '닫기':
+        elif cmd_type == 'exit':
             sys.exit()
         else:
-            print('잘못된 명령어입니다.')
+            print('Invalid command.')
 
 def get_user_choice():
     """
@@ -40,22 +63,23 @@ def get_user_choice():
     Continuously asks for input until a valid choice is made.
 
     Returns:
-        str: The user's choice ('가위', '바위', '보') or '끝내기'.
+        str: The user's choice ('scissors', 'rock', 'paper') or 'quit'.
     """
     while True:
         choice = input(f'''
-메뉴 |끝내기| 현재 점수: {score}
-가위, 바위, 보 중 하나를 선택하세요 : ''').strip()
+Menu | quit | Current Score: {score}
+Choose: scissors, rock, or paper : ''').strip().lower()
+
         if choice in rps:
             return choice
-        if choice == '끝내기':
-            return '끝내기'
+        elif choice in ['quit', 'exit']:
+            return 'quit'
         else:
-            print('\nX 잘못된 입력입니다. 다시 입력해주세요.')
+            print('\nX Invalid input. Please try again.')
 
 def get_computer_choice():
     """
-    Generates a random choice for the computer ('가위', '바위', '보').
+    Generates a random choice for the computer ('scissors', 'rock', 'paper').
 
     Returns:
         str: The computer's random choice.
@@ -67,20 +91,20 @@ def get_result(user: str, computer: str):
     Determines the winner of a rock-paper-scissors round and updates the score.
 
     Args:
-        user (str): The user's choice ('가위', '바위', '보').
-        computer (str): The computer's choice ('가위', '바위', '보').
+        user (str): The user's choice ('scissors', 'rock', 'paper').
+        computer (str): The computer's choice ('scissors', 'rock', 'paper').
 
     Returns:
-        str: A string indicating the result ('비겼다...', '이겼다!', '졌다ㅠㅠ').
+        str: A string indicating the result ('Draw', 'You win!', 'You lose').
     """
     global score
     if user == computer:
-        return '비겼다...'
+        return 'Draw'
     elif win_cases[user] == computer:
         score += 1
-        return '이겼다!'
+        return 'You win!'
     else:
-        return '졌다ㅠㅠ'
+        return 'You lose'
 
 def return_result(user: str, computer: str, result: str):
     """
@@ -89,19 +113,19 @@ def return_result(user: str, computer: str, result: str):
     Args:
         user (str): The user's choice.
         computer (str): The computer's choice.
-        result (str): The outcome of the round ('비겼다...', '이겼다!', '졌다ㅠㅠ').
+        result (str): The outcome of the round ('Draw', 'You win!', 'You lose').
 
     Returns:
         str: A formatted string displaying the choices, result, and current score.
     """
     return (
         "\n"
-        "==================== 결과 ====================\n"
-        f"내 선택: {user}\n"
-        f"상대 선택: {computer}\n\n"
-        f"결과: {result}\n"
-        f"현재 점수: {score}\n"
-        "===============================================\n"
+        "==================== Result ====================\n"
+        f"Your choice: {user}\n"
+        f"Computer's choice: {computer}\n\n"
+        f"Result: {result}\n"
+        f"Current score: {score}\n"
+        "================================================\n"
     )
 
 def game():
@@ -111,7 +135,7 @@ def game():
     """
     while True:
         user_choice = get_user_choice()
-        if user_choice == '끝내기' or user_choice is None:
+        if user_choice == 'quit' or user_choice is None:
             global score
             score = 0
             main()
@@ -124,10 +148,15 @@ def intro():
     """
     Prints the introduction and rules of the rock-paper-scissors game.
     """
-    print('''가위바위보 게임!
-가위, 바위, 보 중 하나를 입력하세요!
-상대는 셋중 무작위로 하나를 냅니다.
-가위는 보, 바위는 가위, 보는 바위를 이깁니다.''')
+    print('''\n===== Game Rules =====
+
+Rock-Paper-Scissors Game!
+Choose one of scissors, rock, or paper!
+The opponent will randomly choose one of them.
+- Scissors beats paper
+- Rock beats scissors
+- Paper beats rock
+=======================\n''')
 
 if __name__ == '__main__':
     main()

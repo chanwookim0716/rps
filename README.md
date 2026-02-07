@@ -1,12 +1,13 @@
 # chanwookim-rps
 
-Simple rock-paper-scissors CLI (가위바위보).
+Simple rock-paper-scissors CLI game.
 
-Features
-- Interactive terminal game with score tracking.
-- Simple CLI entry point after installation (`rps`).
+## Features
+- Interactive terminal game with score tracking
+- Simple CLI entry point after installation (`rps`)
+- Support for multiple command aliases
 
-Prerequisites
+## Prerequisites
 - Python 3.8+
 
 ## Installation
@@ -39,23 +40,28 @@ After installation, you can run the CLI command:
 rps
 ```
 
-Alternatively, you can run directly with Python from the project root:
-```bash
-python rps.py
-```
+### In-Game Commands
+**Main Menu:**
+- `game` or `play` - Start a new game
+- `help` or `rules` - View game rules
+- `exit` or `quit` - Exit the game
+
+**During Game:**
+- `scissors`, `rock`, `paper` - Make your choice
+- `quit` or `exit` - Return to main menu
 
 ## Development
 
 ### Running Unit Tests
 To ensure the core game logic is working correctly, run the unit tests:
 ```bash
-python -m unittest test_rps.py
+python -m unittest tests/test_rps.py
 ```
 
 ### Running the Test Runner
 A simple test runner (with scripted inputs) is available to exercise the game logic:
 ```bash
-python _test_rps_runner.py
+python tests/_test_rps_runner.py
 ```
 
 ## Contributing
